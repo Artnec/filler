@@ -102,6 +102,11 @@ void	read_data(t_filler &f)
 		std::getline(std::cin, line);
 
 	std::getline(std::cin, line);
+	if (line == "error:")
+	{
+		fprintf(stderr, "error: bad player\n");
+		exit(1);
+	}
 	f.p1 = line.substr(line.find_last_of("/") + 1);
 	std::getline(std::cin, line);
 
