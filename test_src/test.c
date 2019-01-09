@@ -6,11 +6,13 @@
 #include <dirent.h>
 #include <stdbool.h>
 
+#define BUF_SIZE	256
+
 int		p1_points = 0;
 int		p2_points = 0;
 int		p1_wins = 0;
 int		p2_wins = 0;
-char	buf[256];
+char	buf[BUF_SIZE];
 
 static void		get_score(char *player1, char *player2)
 {
@@ -18,7 +20,7 @@ static void		get_score(char *player1, char *player2)
 
 	if ((fd = open("filler.trace", O_RDONLY)) == -1)
 		return ;
-	int bytes_read = read(fd, buf, 255);
+	int bytes_read = read(fd, buf, BUF_SIZE - 1);
 	close(fd);
 	buf[bytes_read] = '\0';
 	if (strstr(buf, player1))
