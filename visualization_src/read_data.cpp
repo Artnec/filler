@@ -98,14 +98,17 @@ static void		save_map(t_filler &f)
 void	read_data(t_filler &f)
 {
 	std::string line;
-	for (int i = 0; i < 5; i++)
+	std::getline(std::cin, line);
+	if (line == "error:")
+		exit(1);
+	for (int i = 0; i < 4; i++)
 		std::getline(std::cin, line);
 
 	std::getline(std::cin, line);
 	if (line == "error:")
 	{
 		fprintf(stderr, "error: bad player\n");
-		exit(1);
+		exit(2);
 	}
 	f.p1 = line.substr(line.find_last_of("/") + 1);
 	std::getline(std::cin, line);
